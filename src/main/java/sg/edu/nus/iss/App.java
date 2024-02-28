@@ -1,13 +1,19 @@
 package sg.edu.nus.iss;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
+    private static String defaultdb= "db";
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        System.out.println(args.length);
+        if(args.length>0){
+            System.out.println("arg db directory from arg");
+            App.defaultdb = args[0];
+        }
+        System.out.println(defaultdb);
+
+        shoppingCartDB db = new shoppingCartDB(defaultdb);
+        Session session = new Session(db);
+        session.start();
     }
 }
